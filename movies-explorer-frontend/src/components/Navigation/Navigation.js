@@ -12,10 +12,8 @@ function Navigation(props) {
       }
     useEffect(() => {
         window.addEventListener('resize', updateWidth);
-        //window.addEventListener('keydown', handleEscClick);
         return () => {
           window.removeEventListener('resize', updateWidth);
-          //window.removeEventListener('keydown', handleEscClick);
         }
       })
       console.log(windowWidth)
