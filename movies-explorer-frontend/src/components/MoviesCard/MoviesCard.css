@@ -1,0 +1,53 @@
+.element {
+    list-style: none;
+    width: 270px;
+}
+.element__image {
+    /*background-image: url('../../images/cardMovies/33words.svg');*/
+    width: 270px;
+    height: 151px;
+    background-position: center;
+}
+.element__content {
+    display: flex;
+    justify-content: space-between;
+    width: 270px;
+    margin-bottom: 19px;
+    margin-top: 14px;
+}
+.element__text {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 16px;
+    color: #FFFFFF;
+}
+.element_button-save {
+    margin: auto 0;
+    border: none;
+    background-color: transparent;
+    background-image: url('../../images/moviesLike.svg');
+    width: 24px;
+    height: 24px;
+    background-position: center;
+    cursor: pointer;
+    border-radius: 0;
+    appearance: none;
+}
+.element__time {
+    border-top: 1px solid #424242;
+    padding-top: 6px;   
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 11px;
+    line-height: 13px;
+    display: flex;
+    align-items: center;
+    color: #8B8B8B;
+    margin: 0;
+}
+.element_button-delete {
+    background-image: none;
+}

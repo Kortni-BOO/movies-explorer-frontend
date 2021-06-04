@@ -1,0 +1,107 @@
+.popup__menu_container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    background: #202020;
+    height: 100%;
+    width: calc(100% - 248px);
+    z-index: 4;
+    display: none;
+    flex-direction: column;
+    margin: auto;
+}
+.popup__menu_is-opened {
+    display: flex;
+}
+
+.popup__menu_button-close {
+    margin: 22px 22px 0 auto;
+    background-color: transparent;
+    border: none;
+    background-image: url('../../images/close.svg');
+    background-repeat: no-repeat;
+    width: 44px;
+    height: 44px;
+    cursor: pointer;
+}
+.popup__menu_nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 105px;
+}
+.popup__menu_link {
+    margin: auto;
+    margin-bottom: 28px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;  
+    color: #FFFFFF;
+}
+
+.popup__menu_link-account {
+   margin-bottom: 90px;
+   display: flex;
+   justify-content: flex-start;
+   border: 2px solid #AAAAAA;
+   box-sizing: border-box;
+   border-radius: 50px;
+   width: 100px;
+   height: 32px;
+   flex-direction: row;
+}
+.popup__menu_link-account-image {
+    margin: auto 7px auto 12px;
+    width: 12px;
+    height: 14px;
+}
+.popup__menu_link-account-text {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    display: flex;
+    align-items: center;
+    color: #FFFFFF;
+}
+
+
+/*background-color: rgba(0,0,0, 0.3);*/
+@media screen and (min-width: 320px) and (max-width: 767px) {
+    .popup__menu_container {
+        position: fixed;
+        top: 0;
+        right: 0;
+        background: #202020;
+        height: 100vh;
+        width: 100%;
+        z-index: 4;
+
+        flex-direction: column;
+        margin: auto;
+    }
+    .popup__menu_button-close {
+        margin: 14px 14px 0 auto;
+        background-color: transparent;
+        border: none;
+        background-image: url('../../images/close.svg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 22px;
+        height: 22px;
+        cursor: pointer;
+    }
+    .popup__menu_nav {
+        padding-top: 99.44px;
+    }
+    .popup__menu_link-movies {
+        border-bottom: 1px solid #FFFFFF;
+        width: 72px;
+        padding-bottom: 7px;
+        margin-bottom: 15px;
+    }
+}

@@ -1,0 +1,142 @@
+.project__info {
+    display: flex;
+    flex-direction: row;
+    margin: 70px auto 110px;
+    color: #FFFFFF;
+}
+.project__info_content {
+    max-width: 550px;
+    margin-right: 40px;
+}
+.project__info_content:last-child {
+    margin-right: 0;
+}
+.project__info_title {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: -0.04em;
+    margin: 0 auto 26px;
+}
+.project__info_text {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 20px;
+    max-width: 450px;
+}
+.project__progress {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+}
+.project__progress_backend {
+    background-color: #3DDC84;
+    height: 36px;
+    display: flex;
+}
+.project__progress_frontend {
+    background-color: #303030;
+    height: 36px;
+    display: flex;
+}
+.text_backend {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    color: #000000;
+    margin: auto;
+    
+}
+.text_frontend {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    color: #FFFFFF;
+    margin: auto;
+}
+.project__progress_text {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    color: #8B8B8B;
+    margin-top: 14px;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+    .project__info_content {
+        margin-right: 30px;
+    }
+    .project__info_title {
+        margin-bottom: 22px;
+    }
+    .project__info_text {
+        font-size: 12px;
+        line-height: 18px;
+        width: 319px;
+        margin-top: 0;
+    }
+}
+@media screen and (min-width: 320px) and (max-width: 767px) {
+    .project__info {
+        margin: 60px auto 60px;
+        flex-direction: column;
+    }
+    .project__info_content {
+        width: 284px;
+        margin: 0;
+        padding-bottom: 56px;
+    }
+    .project__info_content:last-child{
+        padding-bottom: 0;
+    }
+    .project__info_text {
+        width: 284px;
+        font-family: Inter;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 11px;
+        line-height: 16px;
+        margin: 16px 0 0 0;
+    }
+    .project__info_title {
+        font-size: 18px;
+        line-height: 22px;
+        margin: 0;
+    }
+    .project__progress_backend {
+        height: 35px;
+        width: 100px;
+    }
+    .text_backend {
+        font-size: 11px;
+        line-height: 13px;        
+    }
+    .text_frontend {
+        font-size: 11px;
+        line-height: 13px;
+    }
+    .project__progress_text {
+        font-family: Suisse Intl;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 11px;
+        line-height: 13px;
+        /* identical to box height */
+        
+        text-align: center;
+        margin-top: 10px;
+        color: #A0A0A0;
+    }
+}

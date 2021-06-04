@@ -1,0 +1,114 @@
+.header {
+    background-color: #202020;
+    display: flex;
+}
+.header__container {
+    display: flex;
+    margin: auto;
+    width: 1140px;
+    justify-content: space-between;
+    flex-direction: row;
+}
+.header__logo {
+    background-image: url('../../images/logoMovie.svg');
+    width: 38px;
+    height: 38px;
+    margin: 18px auto 18px 0;
+}
+.header__register {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    display: flex;
+    align-items: center;
+    text-align: right;
+    color: #FFFFFF;
+    margin: 29px 50px auto auto;
+    text-decoration: none;
+}
+.header__login_button {
+    display: flex;
+    background: #3DDC84;
+    border: none;
+    border-radius: 3px;
+    box-shadow: none;
+    width: 76px;
+    height: 32px;
+    margin: auto 0;
+    text-decoration: none;
+}
+.header__login_text {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    color: #000000;
+    text-align: center;
+    margin: auto;
+    text-decoration: none;
+}
+
+/* Стили на старанице /movies */
+.header__container_movies {
+    display: flex;
+    align-self: unset;
+    width: 1096px;
+    margin-left: 44px;
+}
+.header__link {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 18px;
+    text-align: right;
+    color: #FFFFFF;
+    text-decoration: none;
+    cursor: pointer;
+}
+a {
+    text-decoration: none;
+    direction: none;
+    color: #FFFFFF;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+    .header__container {
+        width: 708px;
+    }
+    .header__logo {
+        margin: 18px auto 18px 0;
+    }
+    .header__register {
+        margin-right: 30px;
+        margin-left: auto;
+    }
+}
+
+@media screen and (min-width: 0) and (max-width: 767px) {
+    .header__container {
+        width: 292px;
+    }
+    .header__logo {
+        margin: 18px auto 18px;
+    }
+    .header__register {
+        margin-right: 14px;
+        margin-left: auto;
+    }
+    .header__link {
+        font-family: Inter;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 10px;
+        line-height: 16px;
+    }
+    .header__login_button {
+        width: 54px;
+        height: 26px;
+        color: #000000;
+    }
+}

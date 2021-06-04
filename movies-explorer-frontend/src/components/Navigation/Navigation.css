@@ -1,0 +1,42 @@
+.header-movies {
+    margin: auto auto auto 0;
+}
+.header-movies__link{
+    margin-right: 16px;
+}
+.header-account {
+    display: flex;
+    justify-content: flex-start;
+    border: 1px solid #AAAAAA;
+    box-sizing: border-box;
+    border-radius: 50px;
+    width: 100px;
+    height: 32px;
+    flex-direction: row;
+}
+.header-account_image {
+    margin: auto 7PX auto 12px;
+    width: 12px;
+    height: 14px;
+}
+.header-account_text {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    /* identical to box height, or 114% */
+    
+    display: flex;
+    align-items: center;
+    
+    color: #FFFFFF;
+}
+.header__button_menu {
+    margin-left: auto;
+    background-color: transparent;
+    border: none;
+    background-image: url('../../images/menu2.svg');
+    width: 44px;
+    height: 44px;
+}

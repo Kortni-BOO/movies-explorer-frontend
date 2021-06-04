@@ -1,0 +1,13 @@
+.form__button_register {
+    margin-top: 69px;
+}
+.register {
+    height: 100vh;
+    background-color:#202020;
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+    .form__button_register {
+        margin-top: 157px;
+    }
+}
