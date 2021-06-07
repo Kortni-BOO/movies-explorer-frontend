@@ -70,12 +70,14 @@
         flex-direction: column;
     }
     .footer__container {
-        width: 300px;
+        /*width: 300px;*/
+        width: calc(100% - 10px * 2);
         flex-direction: column-reverse;
         margin: auto;
     }
     .footer__title {
-        width: 300px;
+        /*width: 300px;*/
+        width: calc(100% - 10px * 2);
     }
     .footer__items {
         list-style: none;

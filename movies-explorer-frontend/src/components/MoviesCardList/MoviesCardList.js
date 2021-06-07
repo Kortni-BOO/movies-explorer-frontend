@@ -16,6 +16,9 @@ function MoviesCardList(props) {
             
         }
     }
+    
+
+
     return (
         <section className='movies-card-list'>
             <div className='movies-card-list__container'>
@@ -26,6 +29,7 @@ function MoviesCardList(props) {
                         <MoviesCard
                             name={item.name}
                             image={item.image}
+
                         />
                     ))
                     : initialsMovieSave.map((item) => (
@@ -33,6 +37,7 @@ function MoviesCardList(props) {
                             name={item.name}
                             image={item.image}
                             class='element_button-delete'
+                            
                         />
                     ))
                     }

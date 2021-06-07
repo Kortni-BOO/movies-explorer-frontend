@@ -51,3 +51,16 @@
 .element_button-delete {
     background-image: none;
 }
+.element_button-save-active {
+    background-image: url('../../images/likeActive2.svg');
+    background-repeat: no-repeat;
+    width: 24px;
+    height: 24px;
+}
+
+.element_button-save-inactive {
+    /*background-image: url('../../images/moviesLike.svg');*/
+    background-repeat: no-repeat;
+    width: 24px;
+    height: 24px;
+}
