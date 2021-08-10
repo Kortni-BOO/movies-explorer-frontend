@@ -58,7 +58,7 @@ function Profile({onSignOut, onUpdateUser, loggedIn}) {
                         </fieldset>
                     
                     <button type='submit' className='profile__button profile__button_edit'>Редактировать</button>
-                    <button className='profile__button profile__button_exit'>Выйти из аккаунта</button>
+                    <button className='profile__button profile__button_exit' onClick={onSignOut}>Выйти из аккаунта</button>
                     </form>
                     <p className="profile__error-text">{}</p>
                 </div>

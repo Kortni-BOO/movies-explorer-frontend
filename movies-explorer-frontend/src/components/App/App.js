@@ -74,8 +74,6 @@ function App() {
 
           MainApi.getContent(jwt)
             .then((res) => {
-        
-               
                 setLoggedIn(true);
                 history.push('/movies');
 
@@ -143,6 +141,7 @@ function App() {
         const sortedMovies = movies.filter(movie => {
           return movie.nameRU.toLowerCase().includes(keyword)
         })
+        console.log(sortedMovies)
         if (checked) {
           location === '/movies'
           ? setMovies(sortedMovies.filter(movie => movie.duration <= 40))
@@ -203,6 +202,7 @@ function App() {
       Promise.all([MainApi.getUserInfo(),MoviesApi.getMovies(), MainApi.getSavedMovie()])
         .then(([user, movies, saveedMovies]) => {
           setCurrentUser(user);
+          console.log(user)
           setMovies(movies);
           setInitialSavedMovies(saveedMovies)
         })
@@ -259,6 +259,7 @@ function App() {
                         component={Profile}
                         loggedIn={loggedIn}
                         onUpdateUser={handleUpdateUser}
+                        onSignOut={onSignOut}
                     ></ProtectedRoute>
 
                     <Route exact path='/signin'>
