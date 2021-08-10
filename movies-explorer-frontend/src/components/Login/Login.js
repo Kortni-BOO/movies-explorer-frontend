@@ -3,11 +3,18 @@ import './Login.css';
 import WelcomeSection from '../WelcomeSection/WelcomeSection';
 import Form from '../Form/Form';
 
-function Login() {
+function Login({onLogin}) {
     return (
         <section className='login'>
             <WelcomeSection title='Рады видеть' />
-            <Form button={'Войти'} text={'Ещё не зарегистрированы?'} link={'Регистрация'} pathLink='/signup'/>
+            <Form
+                button={'Войти'}
+                text={'Ещё не зарегистрированы?'}
+                link={'Регистрация'}
+                pathLink='/signup'
+                onLogin={onLogin}
+                inLogin={false}
+                />
         </section>
     )
 }

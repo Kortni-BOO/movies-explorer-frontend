@@ -1,9 +1,11 @@
 import React from 'react';
 import './FilterCheckbox.css';
 
-function FilterCheckbox() {
+function FilterCheckbox({onChange}) {
+
+
     return(
-        <input type='checkbox' className='filter-checkbox' />
+        <input type='checkbox' onChange={onChange} className='filter-checkbox' />
     )
 }
 

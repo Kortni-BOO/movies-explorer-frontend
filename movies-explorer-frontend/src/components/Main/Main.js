@@ -8,8 +8,7 @@ import Header from '../Header/Header';
 
 function Main(props) {
     const windowWidth = props;
-    console.log(windowWidth)
-    console.log('[')
+
     return (
         <>
             <Header windowWidth={windowWidth}/>

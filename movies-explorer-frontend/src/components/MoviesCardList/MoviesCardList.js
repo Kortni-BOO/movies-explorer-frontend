@@ -1,43 +1,78 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './MoviesCardList.css';
+import { useLocation } from 'react-router-dom';
 import MoviesCard from '../MoviesCard/MoviesCard';
 import initialsMovie from '../../utils/constants';
-import Preloade from '../Preloader/Preloader';
-import Preloader from '../Preloader/Preloader';
 
-function MoviesCardList(props) {
-    const { isButtomFilms, isSaveFilms, isDesktop, isMobile, windowWidth } = props;
-    const initialsMovieSave = initialsMovie.slice(0, 3);
-    const [ moviesCount, setMoviesCount ] = useState([0]);
 
+function MoviesCardList({ isButtomFilms,handleDeleteSavedMovie, isSaveFilms, windowWidth, movies, handleSaveMovie, savedMovies, handleDeleteMovie }) {
+    //Массив для фильмов
+    const [initialMovies, setInitialMovies] = useState([]);
+    //Изначальное отображение
+    const [moviesNumber, setMoviesNumber] = useState(16);
+    //Кольчество добавляемых фильмов на копку
+    const [addMovies, setAddMovies] = useState(0);
+    const [isButtonActive, setIsButtonActive] = React.useState(true);
+
+    const ButtonClassName = (
+        `element_button-save ${isButtonActive ? 'movies-card-list__button' : 'movies-card-list__button_none'}`
+    );
+
+    const location = useLocation().pathname;
     function moviesShow () {
-        if(windowWidth < 1279 && windowWidth > 768) {
-            //setMoviesCount([8])
-            
+        if(windowWidth > 769) {
+            setMoviesNumber(16);
+            setAddMovies(4);
+        } else if(windowWidth <= 768 && windowWidth > 414) {
+            setMoviesNumber(8);
+            setAddMovies(2);
+        } else {
+            setMoviesNumber(5);
+            setAddMovies(2);
         }
     }
-    
 
+    useEffect(() => {
+        if (location === '/movies') {
+            if(movies.length <= moviesNumber) {
+                setIsButtonActive(false)
+            }
+        }
+
+    },[movies])
+    
+    function handleAddMovies() {
+        setInitialMovies(movies.slice(0, initialMovies.length + addMovies))
+    }
+
+    useEffect(() => {
+        moviesShow();
+    }, [windowWidth])
+
+    useEffect(() => {
+        if(!isSaveFilms) {
+            setInitialMovies(movies.slice(0, moviesNumber))
+        } else {
+            setInitialMovies(movies)
+        }
+    },[movies])
+    
 
     return (
         <section className='movies-card-list'>
             <div className='movies-card-list__container'>
                 <ul className='elements'>
                     {
-                    !isSaveFilms ?
-                    initialsMovie.map((item) => (
+                    initialMovies.map((item) => (
                         <MoviesCard
-                            name={item.name}
-                            image={item.image}
+                            key={location === '/movies' ? item.id : item._id} {...item}
+                            //key = {item.id || item._id} {...item}
+                            item={item}
+                            handleSaveMovie={handleSaveMovie}
+                            savedMovies={savedMovies}
+                            handleDeleteMovie={handleDeleteMovie}
+                            handleDeleteSavedMovie={handleDeleteSavedMovie}
 
-                        />
-                    ))
-                    : initialsMovieSave.map((item) => (
-                        <MoviesCard 
-                            name={item.name}
-                            image={item.image}
-                            class='element_button-delete'
-                            
                         />
                     ))
                     }
@@ -47,7 +82,12 @@ function MoviesCardList(props) {
                 ? <div className='movies-card-list__block'>
                     <button className='movies-card-list__button_none'></button>
                   </div>
-                : <button className='movies-card-list__button'>Ещё</button>
+                : <button
+                    className={`${ButtonClassName}`}
+                    onClick={handleAddMovies}
+                  >
+                    Ещё
+                  </button>
                 
             }
             
@@ -56,3 +96,9 @@ function MoviesCardList(props) {
 }
 
 export default MoviesCardList;
+
+
+/**
+ * name={item.name}
+                            image={item.image}
+ */

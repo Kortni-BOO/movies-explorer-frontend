@@ -1,34 +1,82 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
+import Preloader from '../Preloader/Preloader';
+import MOVIES_IMAGE_URL from '../../utils/constants';
 import './MoviesCard.css';
+import { saveMovie } from '../../utils/MainApi';
 
 function MoviesCard(props) {
     //const movie = props;
-    const [isLiked, setIsLiked] = React.useState(false);
-
-    function handleCardLike() {
-        setIsLiked(true)
-    }
+    
+    const location = useLocation().pathname;
+    const [isLiked, setIsLiked] = React.useState(false)
+    
     const cardLikeButtonClassName = (
         `element_button-save ${isLiked ? 'element_button-save-active' : 'element_button-save-inactive'}`
     );
+        
+    const setLikes = () => {
+        const likesCard = props.savedMovies.some((movie) => movie.movieId === props.item.id);
+        if (likesCard) {
+          setIsLiked(true);
+        } else {
+          setIsLiked(false);
+        }
+      }
+    /*
+      React.useEffect(() => {
+        setLikes();
+      }, [props.item.id, props.savedMovies]);
+    */
     
+      function handleLikeClick(evt) {
+        evt.stopPropagation();
+        if (!isLiked) {
+          props.handleSaveMovie(props.item);
+          setIsLiked(true);
+        } else {
+          const savedCard = props.savedMovies.find((movie) => movie.movieId === props.item.id);
+          props.handleDeleteSavedMovie(savedCard);
+          setIsLiked(false);
+        }
+      }
     
+      function handleDeleteClick(evt) {
+        evt.stopPropagation();
+        props.handleDeleteMovie(props.item);
+      }
     
+
+    
+
+ 
+    
+
     return(
         <li className='element'>
             <div className='element__card'>
-                <img className='element__image' alt='Картинка фильма' src={props.image}/>    
+                {location === '/saved-movies' ?
+                <img className='element__image' alt='Картинка фильма сохранение' src={props.item.image}/> 
+                :
+                <img className='element__image' alt='Картинка фильма' src={`https://api.nomoreparties.co${props.image.url}`}/> 
+            }
+                
             </div>
             <div className='element__content'>
-                <h2 className='element__text'>{props.name}</h2>
-                <button
-                    className={` ${cardLikeButtonClassName} ${props.class}`}
-                    onClick={handleCardLike}
-                    >
-
-                </button>
+                <h2 className='element__text'>{props.nameRU}</h2>
+                {location === '/movies' ? 
+                 <button
+                 className={`${cardLikeButtonClassName}`}
+                 
+                 onClick={handleLikeClick}
+                />
+                 : <button
+                 className="element_button-save element_button-delete"
+                 onClick={handleDeleteClick}
+                />
+                }
             </div>
-            <p className='element__time'>1ч42м</p>
+            <p className='element__time'>{`${Math.floor(props.duration / 60)}ч ${props.duration % 60}м`}</p>
         </li>
     )
 }
@@ -37,3 +85,25 @@ export default MoviesCard;
 
 //{` ${cardLikeButtonClassName} ${props.class}`}
 //<div className='element__image' style={{ backgroundImage: `url(${props.image})` }}></div>    
+//`https://api.nomoreparties.co${props.image.url}`
+
+/**
+ {
+            country: props.item.country || "default",
+            director: props.item.director,
+            duration: props.item.duration,
+            year: props.item.year,
+            description: props.item.description,
+            image: props.item.image.url
+              ? `${MOVIES_IMAGE_URL}${props.item.image.url}`
+              : "https://www.youtube.com",
+            trailer: props.item.trailerLink,
+            movieId: props.item.id,
+            nameRU: props.item.nameRU,
+            nameEN: props.item.nameEN,
+            thumbnail: props.item.image.formats.thumbnail.url
+              ? `${MOVIES_IMAGE_URL}${props.item.image.formats.thumbnail.url}`
+              : "https://www.youtube.com",
+            owner: props.item.owner,
+          }
+ */

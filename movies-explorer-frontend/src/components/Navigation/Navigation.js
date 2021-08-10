@@ -4,19 +4,10 @@ import './Navigation.css';
 import Account from '../../images/account.svg';
 import Menu from '../Menu/Menu';
 
-function Navigation(props) {
+function Navigation({windowWidth}) {
     //const windowWidth= props;
-    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-    function updateWidth() {
-        setWindowWidth(window.innerWidth);
-      }
-    useEffect(() => {
-        window.addEventListener('resize', updateWidth);
-        return () => {
-          window.removeEventListener('resize', updateWidth);
-        }
-      })
-      console.log(windowWidth)
+    
+      
       const [isMenuPopupOpen, setIsMenuPopupOpen] = useState(false);
       function handleMenuClick() {
           setIsMenuPopupOpen(true);

@@ -3,8 +3,7 @@ import { Route, Switch, Link } from "react-router-dom";
 import Navigation from '../Navigation/Navigation'
 import './Header.css';
 
-function Header(props) {
-    const windowWidth = props;
+function Header({windowWidth}) {
 
 
     return (
@@ -13,7 +12,7 @@ function Header(props) {
                 <Link to='/'><div className='header__logo'></div></Link>
                 <Switch>
                     <Route exact path='/'>
-                        <Link className='header__link header__register'>Регистрация</Link>
+                        <Link to='/signup' className='header__link header__register'>Регистрация</Link>
                         <Link to='/signin' className='header__link header__login_button'><p className='header__login_text'>Войти</p></Link>
                     </Route>
                         <Route path='/movies'>

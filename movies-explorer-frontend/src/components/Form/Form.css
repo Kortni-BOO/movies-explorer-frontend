@@ -8,6 +8,7 @@
     margin: auto;
 }
 .form__fieldset {
+    position: relative;
     display: flex;
     flex-direction: column;
     border: none;
@@ -59,6 +60,19 @@
     line-height: 17px;
     cursor: pointer;
     color: #4285F4;
+}
+.form__error {
+    position: absolute;
+    top: 63px;
+    left: 3px;
+    display: block;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 10px;
+    line-height: 12px;
+    
+    color: #EE3465;
 }
 
 @media screen and (min-width: 320px) and (max-width: 767px) {
