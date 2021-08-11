@@ -8,7 +8,8 @@ export const register = (name, email, password) => {
     return fetch(`${BASE_URL_MAIN}/signup`, {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            "Authorization" : `Bearer ${localStorage.getItem('jwt')}`
         },
         body: JSON.stringify({
             name,
@@ -24,7 +25,8 @@ export const authorize = (email, password) => {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            "Authorization" : `Bearer ${localStorage.getItem('jwt')}`
         },
         body: JSON.stringify({
             email,

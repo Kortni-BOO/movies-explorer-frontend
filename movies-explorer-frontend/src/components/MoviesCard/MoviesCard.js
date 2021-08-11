@@ -30,7 +30,7 @@ function MoviesCard(props) {
     */
     
       function handleLikeClick(evt) {
-        evt.stopPropagation();
+        evt.preventDefault();
         if (!isLiked) {
           props.handleSaveMovie(props.item);
           setIsLiked(true);
@@ -42,10 +42,15 @@ function MoviesCard(props) {
       }
     
       function handleDeleteClick(evt) {
-        evt.stopPropagation();
+        evt.preventDefault()
         props.handleDeleteMovie(props.item);
       }
     
+      function handleImageClick() {
+        location === '/movies'
+        ? window.open(props.item.trailerLink, '_blank')
+        : window.open(props.item.trailer, '_blank')
+      }
 
     
 
@@ -56,9 +61,9 @@ function MoviesCard(props) {
         <li className='element'>
             <div className='element__card'>
                 {location === '/saved-movies' ?
-                <img className='element__image' alt='Картинка фильма сохранение' src={props.item.image}/> 
+                <img className='element__image' onClick={handleImageClick} alt='Картинка фильма сохранение' src={props.item.image}/> 
                 :
-                <img className='element__image' alt='Картинка фильма' src={`https://api.nomoreparties.co${props.image.url}`}/> 
+                <img className='element__image' onClick={handleImageClick} alt='Картинка фильма' src={`https://api.nomoreparties.co${props.image.url}`}/> 
             }
                 
             </div>
