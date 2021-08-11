@@ -10,6 +10,7 @@ import SavedMovies from '../SavedMovies/SavedMovies';
 import Profile from '../Profile/Profile';
 import Login from '../Login/Login';
 import Register from '../Register/Register';
+import PageNotFound from '../PageNotFound/PageNotFound';
 import Menu from '../Menu/Menu';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import { getToken, setToken } from '../../utils/utils';
@@ -95,7 +96,8 @@ function App() {
       /* Выход  */
       function onSignOut() {
         localStorage.removeItem('jwt');
-        setLoggedIn(false);
+        history.push('/')
+        //setLoggedIn(false);
       }
       /* Получить весь список фильмов */
     function getSavedMovies() {
@@ -118,7 +120,7 @@ function App() {
         const sortedMovies = movies.filter(movie => {
           return movie.nameRU.toLowerCase().includes(keyword)
         })
-        console.log(sortedMovies)
+        
         if (checked) {
           location === '/movies'
           ? setMovies(sortedMovies.filter(movie => movie.duration <= 40))
@@ -133,7 +135,7 @@ function App() {
     /* Cохранить фильм */
     function handleSaveMovie(movie) {
       const jwt = getToken();
-      console.log(jwt)
+      
         MainApi.saveMovie(movie)
           .then((movie) => {
               console.log(movie._id)
@@ -246,6 +248,12 @@ function App() {
                     </Route>
                     <Route>
                         {loggedIn ? <Redirect to="/movies"/> : <Redirect to="/signin"/>}
+                    </Route>
+                    <Route path="*">
+                      <Redirect to="/not-found"/>
+                    </Route>
+                    <Route path="/not-found">
+                        <PageNotFound />
                     </Route>
                     
                 </Switch>
