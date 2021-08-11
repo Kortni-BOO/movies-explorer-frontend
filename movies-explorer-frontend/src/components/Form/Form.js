@@ -63,7 +63,7 @@ function Form({ inLogin, button, text, link, pathLink, classButton, onRegister, 
                         className='form__input'
                         required
                         type="email"
-                        value={values.email}
+                        value={values.email || ""}
                         name="email"
                         onChange={handleChange}></input>
                     <span className='form__error form__error-email'>{errors.email}</span>
@@ -75,7 +75,7 @@ function Form({ inLogin, button, text, link, pathLink, classButton, onRegister, 
                         required
                         type="password"
                         minLength="4"
-                        value={values.password}
+                        value={values.password || ""}
                         name="password"
                         onChange={handleChange}></input>
                     <span className='form__error form__error-email'>{errors.password}</span>

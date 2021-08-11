@@ -9,7 +9,6 @@ export const register = (name, email, password) => {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            "Authorization" : `Bearer ${localStorage.getItem('jwt')}`
         },
         body: JSON.stringify({
             name,
@@ -26,7 +25,6 @@ export const authorize = (email, password) => {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
-            "Authorization" : `Bearer ${localStorage.getItem('jwt')}`
         },
         body: JSON.stringify({
             email,

@@ -35,18 +35,8 @@ function App() {
       setToken(jwt)
       tokenCheck(jwt)
     },[]);
-
-
-
-
-/*
-    useEffect(() => {
-        tokenCheck();
-      }, []);
-*/
     
       function registerAuth(state) {
-        //setIsInfoTooltip(true);
         setIsAuth(state)
       }
         /*Добавить нового пользователя */
@@ -54,7 +44,6 @@ function App() {
           return MainApi.register(name, email, password)
             .then((res) => {
               registerAuth(true);
-              console.log(res)
               history.push('/signin')
             })
             .catch((err) => {
@@ -67,22 +56,16 @@ function App() {
       }
       /*Проверка токена */
       function tokenCheck(jwt) {
-        //const jwt = localStorage.getItem('jwt');
-        
         if(jwt) {
-          //setToken(jwt)
-
           MainApi.getContent(jwt)
             .then((res) => {
                 setLoggedIn(true);
                 history.push('/movies');
-
             })
             .catch((err) => {
               if(err === 401) {
                 console.log("Токен не передан или передан не в том формате");
-              }
-            
+              }          
             })
         }
       }
@@ -93,15 +76,11 @@ function App() {
         return MainApi.authorize(email, password)
           .then((res) => {
             localStorage.setItem('jwt', res.token);
-            console.log(res.token)
-            console.log(res.token)
             setToken(res.token)
             setLoggedIn(true);
             setIsAuth(true);
             history.push('/movies')
-            tokenCheck();
-            
-            
+            tokenCheck(); 
           })
           .catch((err) => {
             if(err === 400) {
@@ -112,8 +91,6 @@ function App() {
             }
           })
       }
-
-
 
       /* Выход  */
       function onSignOut() {
@@ -197,7 +174,6 @@ function App() {
     }
     
     useEffect(() => {
-      //const jwt = localStorage.getItem('jwt');
       setIsLoading(true);
       Promise.all([MainApi.getUserInfo(),MoviesApi.getMovies(), MainApi.getSavedMovie()])
         .then(([user, movies, saveedMovies]) => {
