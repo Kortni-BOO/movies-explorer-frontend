@@ -9,12 +9,13 @@ function MoviesCard(props) {
     //const movie = props;
     
     const location = useLocation().pathname;
+   /*
     const [isLiked, setIsLiked] = React.useState(false)
-    
+     
     const cardLikeButtonClassName = (
         `element_button-save ${isLiked ? 'element_button-save-active' : 'element_button-save-inactive'}`
     );
-        
+    
     const setLikes = () => {
         const likesCard = props.savedMovies.some((movie) => movie.movieId === props.item.id);
         if (likesCard) {
@@ -23,11 +24,9 @@ function MoviesCard(props) {
           setIsLiked(false);
         }
       }
-    /*
       React.useEffect(() => {
         setLikes();
       }, [props.item.id, props.savedMovies]);
-    */
     
       function handleLikeClick(evt) {
         evt.preventDefault();
@@ -40,12 +39,34 @@ function MoviesCard(props) {
           setIsLiked(false);
         }
       }
-    
+
       function handleDeleteClick(evt) {
         evt.preventDefault()
         props.handleDeleteMovie(props.item);
       }
+    */
+
+      const isLiked = props.savedMovies.some((movie) => movie.movieId === props.item.id);
+
+      const cardLikeButtonClassName = (
+        `element_button-save ${isLiked ? 'element_button-save-active' : 'element_button-save-inactive'}`
+    );
+
+      const handleLikeClick = () => {
+        if(!isLiked) {
+          props.handleSaveMovie(props.item);
+        } else {
+          const savedCard = props.savedMovies.find((movie) => movie.movieId === props.item.id);
+          props.handleDeleteSavedMovie(savedCard);
+          //props.handleDeleteMovie(props.savedMovies.find((savedMovie) => savedMovie.movieId === props.item.id)?._id);
+          //props.handleDeleteMovie(props.item);
+        }
+      }
     
+      function handleDeleteClick() {
+        props.handleDeleteMovie(props.item);
+      }
+
       function handleImageClick() {
         location === '/movies'
         ? window.open(props.item.trailerLink, '_blank')

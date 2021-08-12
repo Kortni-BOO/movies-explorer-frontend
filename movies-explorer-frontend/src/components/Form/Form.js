@@ -12,7 +12,7 @@ function Form({ inLogin, button, text, link, pathLink, classButton, onRegister, 
     const {values, handleChange, errors, isValid, resetForm} = useFormWithValidation()
 
 
-  
+    console.log(isValid)
 
     function handleChangeName(e) {
         setName(e.target.value);
@@ -39,6 +39,7 @@ function Form({ inLogin, button, text, link, pathLink, classButton, onRegister, 
         }
         
     }
+    
     return (
         <section className='form__section'>
             <form className='form' onSubmit={handleSubmit}>

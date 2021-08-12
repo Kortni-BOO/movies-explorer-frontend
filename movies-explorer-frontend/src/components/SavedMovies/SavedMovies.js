@@ -9,7 +9,7 @@ function SavedMovies({handleSaveMovie, savedMovies, windowWidth, handleDeleteMov
         <>
             <Header windowWidth={windowWidth}/>
             <SearchForm handleSearch={handleSearch}/>
-            <MoviesCardList handleDeleteMovie={handleDeleteMovie} movies={savedMovies} isButtomFilms={true} isSaveFilms={true} handleSaveMovie={handleSaveMovie}/>
+            <MoviesCardList savedMovies={savedMovies} handleDeleteMovie={handleDeleteMovie} movies={savedMovies} isButtomFilms={true} isSaveFilms={true} handleSaveMovie={handleSaveMovie}/>
             <Footer />
         </>
     )
