@@ -25,12 +25,10 @@ function SearchForm(props) {
       useEffect(() => {
         props.handleSearch(checked)
         setKeyword(localStorage.getItem('keyword'))
-      // eslint-disable-next-line react-hooks/exhaustive-deps
       }, [])
 
       useEffect(() => {
         props.handleSearch(checked)
-      // eslint-disable-next-line react-hooks/exhaustive-deps
       }, [checked])
     
     return(
