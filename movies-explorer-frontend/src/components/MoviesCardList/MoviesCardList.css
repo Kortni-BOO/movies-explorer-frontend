@@ -51,6 +51,18 @@
 .element_button-delete:hover {
     background-image: url('../../images/deleteButton2.svg');
 }
+.elements_not-found {
+    display: flex;
+    margin: auto;
+    width: 100%;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 15px;
+    text-align: center;
+    color: #FFFFFF;
+}
 
 @media screen and (min-width: 768px) and (max-width: 1279px) {
     .elements {

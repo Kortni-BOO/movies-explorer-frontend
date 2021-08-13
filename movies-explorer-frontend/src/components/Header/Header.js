@@ -3,7 +3,7 @@ import { Route, Switch, Link } from "react-router-dom";
 import Navigation from '../Navigation/Navigation'
 import './Header.css';
 
-function Header({windowWidth}) {
+function Header({windowWidth, loggedIn}) {
 
 
     return (
@@ -11,10 +11,15 @@ function Header({windowWidth}) {
             <div className='header__container'>
                 <Link to='/'><div className='header__logo'></div></Link>
                 <Switch>
-                    <Route exact path='/'>
-                        <Link to='/signup' className='header__link header__register'>Регистрация</Link>
-                        <Link to='/signin' className='header__link header__login_button'><p className='header__login_text'>Войти</p></Link>
-                    </Route>
+                    {!loggedIn
+                        ?   <Route exact path='/'>
+                                <Link to='/signup' className='header__link header__register'>Регистрация</Link>
+                                <Link to='/signin' className='header__link header__login_button'><p className='header__login_text'>Войти</p></Link>
+                            </Route>
+                        :   <Route path='/'>
+                                <Navigation onMenuPopup windowWidth={windowWidth}/>
+                            </Route>
+                    }
                         <Route path='/movies'>
                             <Navigation onMenuPopup windowWidth={windowWidth}/>
                         </Route>

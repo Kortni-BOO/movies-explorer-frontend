@@ -4,12 +4,21 @@ import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Footer from '../Footer/Footer';
 
-function SavedMovies({handleSaveMovie, savedMovies, windowWidth, handleDeleteMovie, handleSearch }) {
+function SavedMovies({isNotFound, handleIsShort, handleSaveMovie, savedMovies, windowWidth, handleDeleteMovie, handleSearch, movies, handleStateCheck, handleCheck }) {
     return (
         <>
             <Header windowWidth={windowWidth}/>
-            <SearchForm handleSearch={handleSearch}/>
-            <MoviesCardList savedMovies={savedMovies} handleDeleteMovie={handleDeleteMovie} movies={savedMovies} isButtomFilms={true} isSaveFilms={true} handleSaveMovie={handleSaveMovie}/>
+            <SearchForm handleSearch={handleSearch} handleIsShort={handleIsShort}/>
+            <MoviesCardList
+                savedMovies={savedMovies}
+                handleDeleteMovie={handleDeleteMovie}
+                movies={movies}
+                isButtomFilms={true}
+                isSaveFilms={true}
+                handleSaveMovie={handleSaveMovie}
+                handleCheck={handleCheck}
+                isNotFound={isNotFound}
+                 />
             <Footer />
         </>
     )

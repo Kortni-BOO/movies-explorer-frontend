@@ -5,7 +5,7 @@ import MoviesCard from '../MoviesCard/MoviesCard';
 import initialsMovie from '../../utils/constants';
 
 
-function MoviesCardList({ isButtomFilms,handleDeleteSavedMovie, isSaveFilms, windowWidth, movies, handleSaveMovie, savedMovies, handleDeleteMovie }) {
+function MoviesCardList({isNotFound, isButtomFilms,handleDeleteSavedMovie, isSaveFilms, windowWidth, movies, handleSaveMovie, savedMovies, handleDeleteMovie }) {
     //Массив для фильмов
     const [initialMovies, setInitialMovies] = useState([]);
     //Изначальное отображение
@@ -13,9 +13,9 @@ function MoviesCardList({ isButtomFilms,handleDeleteSavedMovie, isSaveFilms, win
     //Кольчество добавляемых фильмов на копку
     const [addMovies, setAddMovies] = useState(0);
     const [isButtonActive, setIsButtonActive] = React.useState(true);
-
+    
     const ButtonClassName = (
-        `element_button-save ${isButtonActive ? 'movies-card-list__button' : 'movies-card-list__button_none'}`
+        `movies-card-list__button ${isButtonActive ? 'movies-card-list__button' : 'movies-card-list__button_none'}`
     );
 
     const location = useLocation().pathname;
@@ -38,6 +38,7 @@ function MoviesCardList({ isButtomFilms,handleDeleteSavedMovie, isSaveFilms, win
                 setIsButtonActive(false)
             }
         }
+        
 
     },[movies])
     
@@ -61,23 +62,29 @@ function MoviesCardList({ isButtomFilms,handleDeleteSavedMovie, isSaveFilms, win
     return (
         <section className='movies-card-list'>
             <div className='movies-card-list__container'>
-                <ul className='elements'>
-                    {
-                    initialMovies.map((item) => (
-                        <MoviesCard
-                            key={location === '/movies' ? item.id : item._id} {...item}
-                            //key = {item.id || item._id} {...item}
-                            item={item}
-                            handleSaveMovie={handleSaveMovie}
-                            savedMovies={savedMovies}
-                            handleDeleteMovie={handleDeleteMovie}
-                            handleDeleteSavedMovie={handleDeleteSavedMovie}
+                
+                    {isNotFound ? (
+                        <p className="elements_not-found">Ничего не найдено!</p>
+                    ) : (
+                        <ul className='elements'>
+                            {
+                            initialMovies.map((item) => (
+                                <MoviesCard
+                                    key={location === '/movies' ? item.id : item._id} {...item}
+                                    //key = {item.id || item._id} {...item}
+                                    item={item}
+                                    handleSaveMovie={handleSaveMovie}
+                                    savedMovies={savedMovies}
+                                    handleDeleteMovie={handleDeleteMovie}
+                                    handleDeleteSavedMovie={handleDeleteSavedMovie}
+                                />
+                            ))}
+                            </ul>
+                    )}
 
-                        />
-                    ))
-                    }
-                </ul>
+                
             </div>
+           
             {isButtomFilms 
                 ? <div className='movies-card-list__block'>
                     <button className='movies-card-list__button_none'></button>

@@ -5,6 +5,7 @@
 }
 .profile__content {
     display: flex;
+    position: relative;
     flex-direction: column;
     width: 410px;
     margin: auto;
@@ -20,6 +21,7 @@
     margin: 74px auto 123px auto;
 }
 .profile__fieldset {
+    position: relative;
     border: none;
     font-family: Inter;
     font-style: normal;
@@ -73,6 +75,35 @@
     color: #EE3465;
 
 }
+.form__error_profile {
+    position: absolute;
+    top: 18px;
+    left: 160px;
+    display: block;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 10px;
+    line-height: 12px;
+    
+    color: #EE3465;
+}
+.profile__message {
+    margin: auto;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 29px;
+    text-align: center;
+    
+} 
+.profile__message_access {
+    color: #3DDC84;
+}
+.profile__message_error {
+    color: #EE3465;
+}
 
 @media screen and (min-width: 768px) and (max-width: 1279px) {
     .profile__header {
@@ -106,3 +137,8 @@
         margin-bottom: 40px;
     }
 }
+
+
+/*    position: absolute;
+    top: 56%;
+    left: 50%;*/

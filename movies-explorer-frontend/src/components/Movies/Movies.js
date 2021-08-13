@@ -8,7 +8,7 @@ import Menu from '../Menu/Menu';
 import MoviesCard from '../MoviesCard/MoviesCard';
 import Preloader from '../Preloader/Preloader';
 
-function Movies({windowWidth, movies, handleSaveMovie, handleSearch, savedMovies, handleDeleteMovie,handleDeleteSavedMovie, isLoading}) {
+function Movies({isNotFound, handleIsShort, windowWidth, movies, handleSaveMovie, handleSearch, savedMovies, handleDeleteMovie,handleDeleteSavedMovie, isLoading}) {
 
     return(
         <div className='page'>
@@ -16,7 +16,7 @@ function Movies({windowWidth, movies, handleSaveMovie, handleSearch, savedMovies
             <Header 
                 windowWidth={windowWidth}
             />
-            <SearchForm handleSearch={handleSearch}/>
+            <SearchForm handleSearch={handleSearch} handleIsShort={handleIsShort}/>
             {isLoading
                 ? <Preloader />
                 : <MoviesCardList
@@ -26,6 +26,7 @@ function Movies({windowWidth, movies, handleSaveMovie, handleSearch, savedMovies
                     savedMovies={savedMovies}
                     handleDeleteMovie={handleDeleteMovie}
                     handleDeleteSavedMovie={handleDeleteSavedMovie}
+                    isNotFound={isNotFound}
                 />
             
             }

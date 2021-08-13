@@ -6,12 +6,12 @@ import AboutMe from '../AboutMe/AboutMe';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 
-function Main(props) {
-    const windowWidth = props;
+function Main({windowWidth, loggedIn}) {
+    //const windowWidth = props;
 
     return (
         <>
-            <Header windowWidth={windowWidth}/>
+            <Header loggedIn={loggedIn} windowWidth={windowWidth}/>
             <Promo />
             <AboutProject />
             <Techs />

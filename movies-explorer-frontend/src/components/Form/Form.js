@@ -9,10 +9,10 @@ function Form({ inLogin, button, text, link, pathLink, classButton, onRegister, 
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
     
-    const {values, handleChange, errors, isValid, resetForm} = useFormWithValidation()
+    const {values, handleChange, errors, isValid, resetForm} = useFormWithValidation({ name: "", email: "" })
 
 
-    console.log(isValid)
+    
 
     function handleChangeName(e) {
         setName(e.target.value);
