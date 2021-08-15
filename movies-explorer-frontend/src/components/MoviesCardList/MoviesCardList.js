@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import './MoviesCardList.css';
 import { useLocation } from 'react-router-dom';
 import MoviesCard from '../MoviesCard/MoviesCard';
+//import { useMediaQuery } from 'react-responsive';
+import { useMediaQuery } from 'react-responsive';
 import initialsMovie from '../../utils/constants';
 
 
@@ -12,8 +14,9 @@ function MoviesCardList({isNotFound, isButtomFilms,handleDeleteSavedMovie, isSav
     const [moviesNumber, setMoviesNumber] = useState(16);
     //Кольчество добавляемых фильмов на копку
     const [addMovies, setAddMovies] = useState(0);
-    const [isButtonActive, setIsButtonActive] = React.useState(true);
-    
+    const [isButtonActive, setIsButtonActive] = useState(true);
+
+ 
     const ButtonClassName = (
         `movies-card-list__button ${isButtonActive ? 'movies-card-list__button' : 'movies-card-list__button_none'}`
     );
@@ -32,14 +35,15 @@ function MoviesCardList({isNotFound, isButtomFilms,handleDeleteSavedMovie, isSav
         }
     }
 
+
     useEffect(() => {
         if (location === '/movies') {
-            if(movies.length <= moviesNumber) {
+            if(movies.length < moviesNumber) {
                 setIsButtonActive(false)
+            } else {
+                setIsButtonActive(true)
             }
         }
-        
-
     },[movies])
     
     function handleAddMovies() {
@@ -84,18 +88,18 @@ function MoviesCardList({isNotFound, isButtomFilms,handleDeleteSavedMovie, isSav
 
                 
             </div>
-           
+
             {isButtomFilms 
-                ? <div className='movies-card-list__block'>
+                ? (<div className='movies-card-list__block'>
                     <button className='movies-card-list__button_none'></button>
                   </div>
-                : <button
+                ) : (<button
                     className={`${ButtonClassName}`}
                     onClick={handleAddMovies}
                   >
                     Ещё
                   </button>
-                
+                )
             }
             
         </section>

@@ -68,7 +68,7 @@ function Profile({onSignOut, onUpdateUser, loggedIn, statusAccess, statusError, 
                                 //value={email}
                                 value={values.email || ''}
                                 name="email"
-                                type='text'
+                                type='email'
                                 id='name'
                                 required
                                 onChange={handleChange}

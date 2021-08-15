@@ -27,6 +27,7 @@ function Movies({isNotFound, handleIsShort, windowWidth, movies, handleSaveMovie
                     handleDeleteMovie={handleDeleteMovie}
                     handleDeleteSavedMovie={handleDeleteSavedMovie}
                     isNotFound={isNotFound}
+                    
                 />
             
             }

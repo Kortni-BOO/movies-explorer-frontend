@@ -45,6 +45,12 @@ function App() {
           setCurrentUser(user);
           console.log(user)
           setMovies(movies);
+          if (localStorage.getItem('movies') === null) {
+            localStorage.setItem('movies', JSON.stringify(movies));
+            setInitialMovies(movies);
+          } else {
+            setInitialMovies(JSON.parse(localStorage.getItem('movies')));
+          }
           setInitialSavedMovies(saveedMovies);
           setSave(saveedMovies);
           localStorage.setItem('savedMovies', JSON.stringify(saveedMovies));
@@ -55,11 +61,15 @@ function App() {
         })
     
     },[token]);
+   console.log(loggedIn)
 
+    //console.log(initialMovies)
     useEffect(()=> {
       const jwt = localStorage.getItem('jwt');
       setToken(jwt)
       tokenCheck(jwt)
+      localStorage.getItem('movies', JSON.stringify(initialMovies));
+      localStorage.getItem('savedMovies', JSON.stringify(initialSavedMomies));
     },[]);
     
       function registerAuth(state) {
@@ -108,7 +118,7 @@ function App() {
             setToken(res.token)
             setLoggedIn(true);
             setIsAuth(true);
-            history.push('/movies')
+            history.push('/movies');
             tokenCheck(); 
           })
           .catch((err) => {
@@ -168,13 +178,14 @@ function App() {
       }
 
     }
-
+    
     function handleSearch(checked) {
       const keyword = localStorage.getItem('keyword');
-      console.log(checked)
+
+      
       if(location === '/movies') {
         const sortedMovies = movies.filter(movie => {
-          return movie.nameRU.toLowerCase().includes(keyword) || movie.description.toLowerCase().includes(keyword.toLowerCase())
+          return movie.nameRU.toLowerCase().includes(keyword.toLowerCase())
         })
         if(sortedMovies.length === 0) {
           setIsNotFound(true)
@@ -184,20 +195,10 @@ function App() {
         localStorage.setItem('movies', JSON.stringify(sortedMovies));
         setInitialMovies(sortedMovies)
         setImovies(sortedMovies)
-        /*
-        if (!checked) {
-          console.log('2')
-          setInitialMovies(sortedMovies.filter(movie => movie.duration <= 40))
-          localStorage.setItem('movies', JSON.stringify(sortedMovies.filter((movie) => movie.duration <= 40)));
-        } else {
-          console.log('21')
-          setInitialMovies(sortedMovies)
-          localStorage.setItem('movies', JSON.stringify(sortedMovies));
-        }
-        */
+        console.log(sortedMovies)
       } else {
         const sortedMovies = initialSavedMomies.filter(movie => {
-          return movie.nameRU.toLowerCase().includes(keyword) || movie.description.toLowerCase().includes(keyword.toLowerCase())
+          return movie.nameRU.toLowerCase().includes(keyword.toLowerCase())
         })
         if(sortedMovies.length === 0) {
           setIsNotFound(true)
@@ -206,21 +207,12 @@ function App() {
         }
         localStorage.setItem('savedMovies', JSON.stringify(sortedMovies));
         setInitialSavedMovies(sortedMovies)
-        /*
-        if (!checked) {
-          console.log('iiiio')
-          setInitialSavedMovies(sortedMovies.filter(movie => movie.duration <= 40))
-          localStorage.setItem('savedMovies', JSON.stringify(initialSavedMomies.filter((savedMovie) => savedMovie.duration <= 40)));
-        } else {
-          setInitialSavedMovies(sortedMovies)
-          localStorage.setItem('savedMovies', JSON.stringify(sortedMovies));
-        }
-        */
-      }
-      }
-      //console.log(initialSavedMomies)
+        setIsaveMovies(sortedMovies)
 
-   
+      }
+      }
+
+
     /* Cохранить фильм */
     function handleSaveMovie(movie) {
       const jwt = getToken();
@@ -264,9 +256,12 @@ function App() {
     function updateWidth() {
         setWindowWidth(window.innerWidth);
     }
-    
-
-
+    //setInitialMovies(localStorage.getItem('movies'))
+/*
+    useEffect(() => {
+      localStorage.setItem("movies", JSON.stringify([]))
+    }, [token])
+    */
     useEffect(() => {
         window.addEventListener('resize', updateWidth);
         return () => {
@@ -330,8 +325,11 @@ function App() {
                     <Route exact path='/signup'>
                         <Register onRegister={handleRegister}/>
                     </Route>
-                    <Route>
-                        {loggedIn ? <Redirect to="/movies"/> : <Redirect to="/signin"/>}
+                    <Route exact path='/movies'>
+                        {loggedIn ? <Redirect to='/movies'/> : <Redirect to='/'/>}
+                    </Route>
+                    <Route exact path='/saved-movies'>
+                        {loggedIn ? <Redirect to='/saved-movies'/> : <Redirect to='/'/>}
                     </Route>
                     <Route path="*">
                       <Redirect to="/not-found"/>
@@ -382,6 +380,8 @@ export default App;
           setInitialMovies(sortedMovies)
 
         }  
+        movie.description.toLowerCase().includes(keyword.toLowerCase() ||
+         || movie.description.toLowerCase().includes(keyword.toLowerCase())
         */
          
  
