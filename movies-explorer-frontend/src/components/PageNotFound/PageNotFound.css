@@ -1,0 +1,7 @@
+.page-not-found {
+    background: #202020;
+    display: flex;
+}
+.page-not-found__title {
+    margin: auto;
+}
